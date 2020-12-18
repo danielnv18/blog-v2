@@ -1,8 +1,16 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
+import { SanityPost } from "../types";
 
-function PostTemplate() {
-  return <h1>Post template</h1>;
+interface PostTemplateProps extends PageProps {
+  data: {
+    post: SanityPost;
+  };
+}
+
+function PostTemplate({ data }: PostTemplateProps) {
+  const { post } = data;
+  return <h1>{post.title}</h1>;
 }
 
 export const query = graphql`
