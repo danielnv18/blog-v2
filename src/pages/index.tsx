@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { SanityPost, SanityPostConnection, SanityPostEdge } from "../types";
+import { SanityPostConnection } from "../types";
 
 interface IndexPageProps extends PageProps {
   data: {
@@ -9,10 +9,11 @@ interface IndexPageProps extends PageProps {
 }
 
 function IndexPage({ data }: IndexPageProps) {
+  const { posts } = data;
   return (
     <>
       <h1>Daniel Noyola Blog re-design</h1>
-      {data.posts.nodes.map((post) => (
+      {posts.nodes.map((post) => (
         <h3 key={post.id}>{post.title}</h3>
       ))}
     </>
