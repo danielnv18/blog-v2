@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
+import { withLayout } from "../components/Layout";
 import { SanityPostConnection } from "../types";
 
 interface IndexPageProps extends PageProps {
@@ -31,4 +32,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default withLayout(IndexPage);
