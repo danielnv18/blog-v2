@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     // Plugins
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: "gatsby-source-sanity",
       options: {
