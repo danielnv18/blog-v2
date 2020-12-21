@@ -13,5 +13,13 @@ module.exports = {
         overlayDrafts: true,
       },
     },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Fira Sans"],
+        },
+      },
+    },
   ],
 };
