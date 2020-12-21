@@ -1,25 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-
-const NavHeader = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 400;
-  transition: all ease-out 0.3s;
-`;
-const NavClose = styled.div`
-  position: fixed;
-  z-index: 350;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: 0.2;
-  display: none;
-`;
+import { Link } from "gatsby";
+import { NavClose, NavHeader, NavControl } from "./styles";
 
 function Navigation() {
   return (
@@ -28,24 +9,19 @@ function Navigation() {
         <nav className="nav-wrapper">
           <ul role="navigation" aria-label="Navigation">
             <li className="nav-home active" role="presentation">
-              <a href="https://attila.zutrinken.com/">
+              <Link to="/">
                 <span>Home</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-tag" role="presentation">
-              <a href="https://attila.zutrinken.com/tag/getting-started/">
-                <span>Tag</span>
-              </a>
+              <Link to="/tags/">
+                <span>Tags</span>
+              </Link>
             </li>
             <li className="nav-author" role="presentation">
-              <a href="https://attila.zutrinken.com/author/ghost/">
-                <span>Author</span>
-              </a>
-            </li>
-            <li className="nav-download" role="presentation">
-              <a href="https://github.com/zutrinken/attila/releases">
-                <span>Download</span>
-              </a>
+              <Link to="/about">
+                <span>About</span>
+              </Link>
             </li>
           </ul>
 
@@ -53,7 +29,7 @@ function Navigation() {
             <li className="nav-twitter">
               <a
                 title="Twitter"
-                href="https://twitter.com/tryghost"
+                href="https://twitter.com/danielnv18"
                 target="_blank"
               >
                 <i className="icon icon-twitter"></i>
@@ -62,12 +38,12 @@ function Navigation() {
             </li>
             <li className="nav-facebook">
               <a
-                title="Facebook"
-                href="https://www.facebook.com/ghost"
+                title="Github"
+                href="https://www.github.com/danielnv18"
                 target="_blank"
               >
-                <i className="icon icon-facebook"></i>
-                <span>Facebook</span>
+                <i className="icon icon-github"></i>
+                <span>Github</span>
               </a>
             </li>
             <li className="nav-rss">
@@ -88,6 +64,17 @@ function Navigation() {
             </li>
           </ul>
         </nav>
+        <NavControl>
+          <div className="inner">
+            <a className="nav-menu">
+              <i className="icon icon-menu"></i>Menu
+            </a>
+            <a className="nav-search" title="Search">
+              <i className="icon icon-search"></i>
+              <span>Search</span>
+            </a>
+          </div>
+        </NavControl>
       </NavHeader>
       <NavClose />
     </>

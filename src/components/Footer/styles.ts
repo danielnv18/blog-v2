@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const StyledFooter = styled.footer`
+export const StyledFooter = styled.footer`
   position: relative;
   z-index: 20;
   padding-top: calc(12rem + 8vw);
@@ -48,19 +47,3 @@ const StyledFooter = styled.footer`
     }
   }
 `;
-
-function Footer() {
-  return (
-    <StyledFooter>
-      <nav className="nav-wrapper">
-        <span className="nav-copy">Attila © 2020</span>
-        <span className="nav-credits">
-          Published with <a href="https://ghost.org">Ghost</a> • Theme{" "}
-          <a href="https://github.com/zutrinken/attila">Attila</a>
-        </span>
-      </nav>
-    </StyledFooter>
-  );
-}
-
-export default Footer;

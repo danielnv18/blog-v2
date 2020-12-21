@@ -1,18 +1,10 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
 
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+import { PageWrapper } from "./styles";
+import Navigation from "./../Navigation";
+import Footer from "./../Footer";
 
-const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  padding-right: 0;
-`;
-
-export interface LayoutProps {
+interface LayoutProps {
   location: {
     pathname: string;
   };

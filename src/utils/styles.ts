@@ -8,7 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary-active: #BF4526;
     --color-text-primary: #222426;
     --color-text-secondary: #909499;
-    --color-white: #FFF
+    --color-white: #FFF;
+    --color-neutral-25: #3b3d40;
   }
   @media (prefers-color-scheme: dark) {
 		--color-white: #222426;
@@ -25,13 +26,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: var(--font-primary);
     font-size: 1em;
-    line-height: 1.75em;
+    line-height: 1.5em;
     font-weight: 400;
-    color: var(--color-text-primary);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    color: var(--color-text-primary);
     background: var(--color-white);
     
   }
