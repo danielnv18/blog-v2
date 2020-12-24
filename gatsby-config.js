@@ -1,4 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: `Daniel Noyola`,
+    description: `Daniel Noyola's blog.`,
+    siteUrl: `https://daniel.noyola.dev`,
+  },
   plugins: [
     // Plugins
     `gatsby-plugin-typescript`,
@@ -17,7 +22,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Fira Sans"],
+          families: ["Fira Sans", "Cardo"],
         },
       },
     },
