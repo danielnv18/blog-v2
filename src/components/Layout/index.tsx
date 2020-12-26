@@ -1,13 +1,12 @@
 import React, { ReactNode } from "react";
+import { WindowLocation } from "@reach/router"
 import { PageWrapper, Main } from "./styles";
 import Navigation from "./../Navigation";
 import Header from "./../Header";
 import Footer from "./../Footer";
 
 interface LayoutProps {
-  location: {
-    pathname: string;
-  };
+  location: WindowLocation;
   children: ReactNode;
 }
 
@@ -16,7 +15,7 @@ interface withLayoutProps {}
 const Layout = (props: LayoutProps) => {
   return (
     <>
-      <Navigation />
+      <Navigation location={props.location}/>
       <PageWrapper>
         <Header />
         <Main>{props.children}</Main>

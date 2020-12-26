@@ -12,5 +12,5 @@ export function nodeExcerpt(blocks: Array<SanityBlock>): SanitySpan {
     Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
   );
 
-  return { ...span, ...{ text: trimmedString } };
+  return { ...span, ...{ text: `${trimmedString}...` } };
 }

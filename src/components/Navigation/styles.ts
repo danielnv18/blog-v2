@@ -71,6 +71,46 @@ export const NavHeader = styled.div`
         }
       }
     }
+    a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.6em;
+      line-height: 2rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-decoration: none;
+      font-weight: 400;
+      cursor: pointer;
+      transition: color linear 0.1s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-neutral-25);
+        @media only screen and (max-width: ${(props) =>
+            props.theme.breakpointMedium}) {
+          background: var(--color-neutral-80);
+        }
+      }
+
+      @media only screen and (max-width: ${(props) =>
+          props.theme.breakpointMedium}) {
+        font-size: 2em;
+        padding-left: 4rem;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 1.5rem;
+          height: 2px;
+          margin-left: 6px;
+          margin-top: -1px;
+          border-radius: 2px;
+          background: var(--color-neutral-25);
+        }
+      }
+    }
   }
 `;
 

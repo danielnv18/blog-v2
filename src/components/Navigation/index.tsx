@@ -1,25 +1,48 @@
 import React from "react";
 import { Link } from "gatsby";
+import { WindowLocation } from "@reach/router";
+import classnames from "classnames";
 import { NavClose, NavHeader, NavControl } from "./styles";
 
-function Navigation() {
+interface NavigationProps {
+  location: WindowLocation;
+}
+
+function Navigation({ location }: NavigationProps) {
+  const isActive = (currentpathname: string, pathname: string) =>
+    currentpathname === pathname;
   return (
     <>
       <NavHeader>
         <nav className="nav-wrapper">
           <ul role="navigation" aria-label="Navigation">
-            <li className="nav-home active" role="presentation">
+            <li
+              className={classnames("nav-home", {
+                active: isActive(location.pathname, "/"),
+              })}
+              role="presentation"
+            >
               <Link to="/">
                 <span>Home</span>
               </Link>
             </li>
-            <li className="nav-tag" role="presentation">
+            <li
+              className={classnames("nav-tag", {
+                active: isActive(location.pathname, "/tags/"),
+              })}
+              role="presentation"
+            >
               <Link to="/tags/">
                 <span>Tags</span>
               </Link>
             </li>
-            <li className="nav-author" role="presentation">
-              <Link to="/about">
+            <li
+              className={classnames("nav-about", {
+                active: isActive(location.pathname, "/about"),
+              })}
+              role="presentation"
+            >
+              <Link to="/about/">
                 <span>About</span>
               </Link>
             </li>
