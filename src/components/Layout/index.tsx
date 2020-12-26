@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-
-import { PageWrapper } from "./styles";
+import { PageWrapper, Main } from "./styles";
 import Navigation from "./../Navigation";
+import Header from "./../Header";
 import Footer from "./../Footer";
 
 interface LayoutProps {
@@ -18,7 +18,8 @@ const Layout = (props: LayoutProps) => {
     <>
       <Navigation />
       <PageWrapper>
-        {props.children}
+        <Header />
+        <Main>{props.children}</Main>
         <Footer />
       </PageWrapper>
     </>

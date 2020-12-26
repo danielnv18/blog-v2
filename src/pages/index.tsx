@@ -2,6 +2,7 @@ import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { withLayout } from "../components/Layout";
 import { SanityPostConnection } from "../types";
+import PostTeaser from "../components/PostTeaser";
 
 interface IndexPageProps extends PageProps {
   data: {
@@ -15,7 +16,7 @@ function IndexPage({ data }: IndexPageProps) {
     <>
       <h1>Daniel Noyola Blog re-design</h1>
       {posts.nodes.map((post) => (
-        <h3 key={post.id}>{post.title}</h3>
+        <PostTeaser key={post.id} post={post} />
       ))}
     </>
   );
@@ -27,6 +28,28 @@ export const query = graphql`
       nodes {
         id
         title
+        publishedAt
+        body {
+          children {
+            _type
+            text
+          }
+        }
+        slug {
+          current
+        }
+        author {
+          name
+          slug {
+            current
+          }
+        }
+        categories {
+          title
+          slug {
+            current
+          }
+        }
       }
     }
   }

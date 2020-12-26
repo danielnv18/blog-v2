@@ -7,6 +7,12 @@ export const NavHeader = styled.div`
   width: 100%;
   z-index: 400;
   transition: all ease-out 0.3s;
+  .nav-wrapper {
+    display: flex;
+    max-height: calc(100vh - 6rem);
+    padding: 2rem 4rem;
+    overflow-y: auto;
+  }
   ul {
     position: relative;
     display: flex;

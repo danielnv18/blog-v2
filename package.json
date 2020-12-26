@@ -9,12 +9,15 @@
     "generate": "graphql-codegen"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
     "babel-plugin-styled-components": "^1.12.0",
+    "date-fns": "^2.16.1",
     "gatsby": "^2.29.1",
     "gatsby-plugin-styled-components": "^3.7.0",
     "gatsby-plugin-typescript": "^2.9.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-sanity": "^6.0.4",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1",
@@ -23,6 +26,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.19.4",
     "@graphql-codegen/typescript": "^1.19.0",
+    "@types/lodash": "^4.14.166",
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
