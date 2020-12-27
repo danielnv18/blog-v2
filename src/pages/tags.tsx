@@ -1,15 +1,17 @@
 import React from "react";
 import { PageProps } from "gatsby";
-import { withLayout } from "../components/Layout";
+import Layout from "../components/Layout";
 
 interface TagsPageProps extends PageProps {}
 
-function TagsPage({ data }: TagsPageProps) {
+function TagsPage(props: TagsPageProps) {
+  const { location } = props;
+
   return (
-    <>
+    <Layout location={location} header={{ title: "Tags" }}>
       <h1>Tags Page</h1>
-    </>
+    </Layout>
   );
 }
 
-export default withLayout(TagsPage);
+export default TagsPage;

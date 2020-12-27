@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { withLayout } from "../components/Layout";
+import Layout from "../components/Layout";
 import { SanityPostConnection } from "../types";
 import PostTeaser from "../components/PostTeaser";
 
@@ -10,15 +10,16 @@ interface IndexPageProps extends PageProps {
   };
 }
 
-function IndexPage({ data }: IndexPageProps) {
+function IndexPage(props: IndexPageProps) {
+  const { data, location } = props;
   const { posts } = data;
   return (
-    <>
-      <h1>Daniel Noyola Blog re-design</h1>
+    <Layout location={location} header={{ title: "TItle" }}>
+      <p>asd</p>
       {posts.nodes.map((post) => (
         <PostTeaser key={post.id} post={post} />
       ))}
-    </>
+    </Layout>
   );
 }
 
@@ -55,4 +56,4 @@ export const query = graphql`
   }
 `;
 
-export default withLayout(IndexPage);
+export default IndexPage;

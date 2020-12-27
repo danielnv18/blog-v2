@@ -1,23 +1,22 @@
 import React, { ReactNode } from "react";
-import { WindowLocation } from "@reach/router"
+import { WindowLocation } from "@reach/router";
 import { PageWrapper, Main } from "./styles";
 import Navigation from "./../Navigation";
-import Header from "./../Header";
+import Header, { HeaderProps } from "./../Header";
 import Footer from "./../Footer";
 
 interface LayoutProps {
   location: WindowLocation;
   children: ReactNode;
+  header: HeaderProps;
 }
-
-interface withLayoutProps {}
 
 const Layout = (props: LayoutProps) => {
   return (
     <>
-      <Navigation location={props.location}/>
+      <Navigation location={props.location} />
       <PageWrapper>
-        <Header />
+        <Header {...props.header} />
         <Main>{props.children}</Main>
         <Footer />
       </PageWrapper>
@@ -26,17 +25,3 @@ const Layout = (props: LayoutProps) => {
 };
 
 export default Layout;
-
-export const withLayout = <P extends object>(
-  WrappedComponent: React.ComponentType<P>,
-  props = {}
-) =>
-  class WithLayout extends React.Component<P & LayoutProps> {
-    render() {
-      return (
-        <Layout location={this.props.location} {...props}>
-          <WrappedComponent {...this.props} />
-        </Layout>
-      );
-    }
-  };

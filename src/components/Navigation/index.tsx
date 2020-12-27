@@ -47,7 +47,6 @@ function Navigation({ location }: NavigationProps) {
               </Link>
             </li>
           </ul>
-
           <ul className="nav-side">
             <li className="nav-twitter">
               <a
@@ -59,7 +58,7 @@ function Navigation({ location }: NavigationProps) {
                 <span>Twitter</span>
               </a>
             </li>
-            <li className="nav-facebook">
+            <li className="nav-github">
               <a
                 title="Github"
                 href="https://www.github.com/danielnv18"
@@ -67,16 +66,6 @@ function Navigation({ location }: NavigationProps) {
               >
                 <i className="icon icon-github"></i>
                 <span>Github</span>
-              </a>
-            </li>
-            <li className="nav-rss">
-              <a
-                title="RSS"
-                href="https://attila.zutrinken.com/rss/"
-                target="_blank"
-              >
-                <i className="icon icon-rss"></i>
-                <span>RSS</span>
               </a>
             </li>
             <li className="nav-search">
