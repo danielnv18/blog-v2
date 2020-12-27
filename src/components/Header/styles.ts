@@ -16,7 +16,7 @@ export const StyledHeader = styled.header`
     }
   }
 
-  .blog-box {
+  .box {
     position: relative;
     z-index: 10;
     padding-bottom: calc(4rem + 2vw);
@@ -27,5 +27,26 @@ export const StyledHeader = styled.header`
   &.has-cover .blog-box {
     border: none;
     padding-bottom: calc(8rem + 4vw);
+  }
+
+  .title {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 6em;
+    line-height: 1em;
+    text-decoration: none;
+    color: var(--color-text-primary);
+  }
+
+  .description {
+    font-family: var(--font-secondary);
+    display: block;
+    margin-top: 1rem;
+    padding: 0;
+    font-size: 3em;
+    line-height: 1.33334em;
+    color: var(--color-text-secondary);
   }
 `;

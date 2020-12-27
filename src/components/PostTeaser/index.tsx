@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "gatsby";
 import { SanityPost } from "../../types";
 import { ArticleTeaser } from "./styles";
-import Block from "../Block";
 import { nodeExcerpt } from "../../utils/helpers";
+import { Inner } from "../../utils/styles";
 
 interface PostTeaserProps {
   post: SanityPost;
@@ -14,7 +14,7 @@ function PostTeaser(props: PostTeaserProps) {
   const span = nodeExcerpt(post.body);
   return (
     <ArticleTeaser className="post tag-getting-started">
-      <div className="inner">
+      <Inner>
         <div className="box post-box">
           <h2 className="post-title">
             <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
@@ -36,7 +36,7 @@ function PostTeaser(props: PostTeaserProps) {
           </span>
           <p>{span.text} </p>
         </div>
-      </div>
+      </Inner>
     </ArticleTeaser>
   );
 }

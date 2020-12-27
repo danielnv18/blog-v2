@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -51,3 +51,13 @@ export const theme = {
   breakpointSmall: "480px",
   inner: "calc(64rem + 8vw)",
 };
+
+export const Inner = styled.div`
+  max-width: calc(64rem + 8vw);
+  margin: 0 auto;
+  padding: 0 8rem;
+  @media only screen and (max-width: ${(props) =>
+      props.theme.breakpointMedium}) {
+    padding: 0 4rem;
+  }
+`;

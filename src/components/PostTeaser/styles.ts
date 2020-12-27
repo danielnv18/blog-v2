@@ -3,11 +3,7 @@ import styled from "styled-components";
 export const ArticleTeaser = styled.article`
   position: relative;
   z-index: 10;
-  .inner {
-    max-width: calc(64rem + 8vw);
-    margin: 0 auto;
-    padding: 0 8rem;
-  }
+
   .post-box {
     padding-top: calc(4rem + 2vw);
     padding-bottom: calc(4rem + 2vw);

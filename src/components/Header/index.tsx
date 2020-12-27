@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledHeader } from "./styles";
+import { Inner } from "../../utils/styles";
 
 export interface HeaderProps {
   title: string;
@@ -12,12 +13,12 @@ export interface HeaderProps {
 function Header(props: HeaderProps) {
   return (
     <StyledHeader>
-      <div className="inner">
-        <div className="box blog-box">
-          <h1 className="blog-name">{props.title}</h1>
-          <span className="blog-description">booooooooo</span>
+      <Inner>
+        <div className="box">
+          <h1 className="title">{props.title}</h1>
+          <span className="description">this is a description</span>
         </div>
-      </div>
+      </Inner>
     </StyledHeader>
   );
 }
