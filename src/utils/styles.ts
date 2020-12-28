@@ -43,6 +43,34 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--color-white);
     
   }
+  
+  .menu-active {
+    .nav-close {
+      @media only screen and (max-width: ${(props) => theme.breakpointMedium}) {
+        display: block;
+      }
+    }
+
+    .nav-header {
+      transform: translate3d(0,0,0);
+      .nav-wrapper-control {
+        background: var(--color-neutral-15);
+        color: var(--color-text-secondary);
+        border-color: var(--color-border-dark);
+        @supports (-webkit-backdrop-filter: blur(2rem)) {
+          background: rgba(34,36,38,0.9);
+          -webkit-backdrop-filter: blur(2rem);
+        }
+
+        a {
+          &:focus,
+          &:hover {
+            color: var(--color-text-primary-dark);
+          }
+        }
+      }
+    }
+  }
 `;
 
 export const theme = {

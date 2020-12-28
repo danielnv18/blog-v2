@@ -16,7 +16,9 @@ function Header(props: HeaderProps) {
       <Inner>
         <div className="box">
           <h1 className="title">{props.title}</h1>
-          <span className="description">this is a description</span>
+          {props.description ? (
+            <span className="description">{props.description}</span>
+          ) : null}
         </div>
       </Inner>
     </StyledHeader>

@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "gatsby";
 import { WindowLocation } from "@reach/router";
 import classnames from "classnames";
+import { Inner } from "../../utils/styles";
 import { NavClose, NavHeader, NavControl } from "./styles";
+import IconMenu from "../../icons/bars-solid.svg";
+import IconSearch from "../../icons/search-solid.svg";
 
 interface NavigationProps {
   location: WindowLocation;
@@ -11,9 +14,16 @@ interface NavigationProps {
 function Navigation({ location }: NavigationProps) {
   const isActive = (currentpathname: string, pathname: string) =>
     currentpathname === pathname;
+
+  const toggleActiveClass = () =>
+    document.querySelector("html").classList.toggle("menu-active");
+
+  const removeActiveClass = () =>
+    document.querySelector("html").classList.remove("menu-active");
+
   return (
     <>
-      <NavHeader>
+      <NavHeader className="nav-header">
         <nav className="nav-wrapper">
           <ul role="navigation" aria-label="Navigation">
             <li
@@ -76,19 +86,20 @@ function Navigation({ location }: NavigationProps) {
             </li>
           </ul>
         </nav>
-        <NavControl>
-          <div className="inner">
-            <a className="nav-menu">
-              <i className="icon icon-menu"></i>Menu
+        <NavControl className="nav-wrapper-control">
+          <Inner className="inner">
+            <a className="nav-menu" onClick={toggleActiveClass}>
+              <IconMenu className="icon icon-menu" />
+              Menu
             </a>
             <a className="nav-search" title="Search">
-              <i className="icon icon-search"></i>
+              <IconSearch className="icon icon-search" />
               <span>Search</span>
             </a>
-          </div>
+          </Inner>
         </NavControl>
       </NavHeader>
-      <NavClose />
+      <NavClose className="nav-close" onClick={removeActiveClass} />
     </>
   );
 }

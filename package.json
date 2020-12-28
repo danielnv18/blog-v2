@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "gatsby": "^2.29.1",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-styled-components": "^3.7.0",
     "gatsby-plugin-typescript": "^2.9.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",

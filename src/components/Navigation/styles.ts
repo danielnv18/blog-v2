@@ -7,11 +7,24 @@ export const NavHeader = styled.div`
   width: 100%;
   z-index: 400;
   transition: all ease-out 0.3s;
+  @media only screen and (max-width: ${(props) =>
+      props.theme.breakpointMedium}) {
+    transform: translate3d(0, -100%, 0);
+  }
   .nav-wrapper {
     display: flex;
     max-height: calc(100vh - 6rem);
     padding: 2rem 4rem;
     overflow-y: auto;
+    @media only screen and (max-width: ${(props) =>
+        props.theme.breakpointMedium}) {
+      background: var(--color-neutral-15);
+      flex-direction: column;
+      @supports (-webkit-backdrop-filter: blur(2rem)) {
+        background: rgba(34, 36, 38, 0.9);
+        -webkit-backdrop-filter: blur(2rem);
+      }
+    }
   }
   ul {
     position: relative;
@@ -134,7 +147,15 @@ export const NavControl = styled.div`
     display: flex;
     justify-content: space-between;
   }
-
+  .icon {
+    display: inline-block;
+    margin: 0 0.2em;
+    width: 4rem;
+    height: 17px;
+  }
+  .nav-search span {
+    display: none;
+  }
   a {
     position: relative;
     display: block;
