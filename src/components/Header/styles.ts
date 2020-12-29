@@ -5,8 +5,8 @@ export const StyledHeader = styled.header`
   padding-top: calc(16rem + 4vw);
 
   &.has-cover {
-    padding-top: calc(24rem + 8vw);
-    color: var(--color-white);
+    padding: calc(16rem + 8vw) 0 calc(4rem + 6vw);
+    margin-bottom: calc(4rem + 2vw);
     background: #000;
     overflow: hidden;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -48,5 +48,46 @@ export const StyledHeader = styled.header`
     font-size: 3em;
     line-height: 1.33334em;
     color: var(--color-text-secondary);
+  }
+
+  .gatsby-image-wrapper {
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    background: no-repeat scroll center center / cover #000;
+    animation: 0.5s ease-in forwards fadein;
+    display: flex;
+    align-items: center;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 66.666%;
+      left: 0;
+      bottom: 0;
+      z-index: 8;
+      background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.333) 100%
+      );
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.333) 100%
+      );
+    }
+    & > img {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      z-index: 6;
+      object-fit: cover;
+    }
   }
 `;

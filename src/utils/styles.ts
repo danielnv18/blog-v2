@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   :root {
     --font-primary: 'Fira Sans', sans-serif;
-    --font-secondary: 'Libre Baskerville', serif;
+    --font-secondary: 'Cardo Baskerville', serif;
     --color-neutral-98: #f7f8fa;
     --color-neutral-90: #e1e3e6;
     --color-neutral-80: #c4c7cc;

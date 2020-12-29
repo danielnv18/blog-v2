@@ -13,28 +13,28 @@ function PostTeaser(props: PostTeaserProps) {
   const { post } = props;
   const span = nodeExcerpt(post.body);
   return (
-    <ArticleTeaser className="post tag-getting-started">
+    <ArticleTeaser className="post">
       <Inner>
-        <div className="box post-box">
+        <div className="box">
           <h2 className="post-title">
             <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
           </h2>
           <span className="post-meta">
-            By
+            By {` `}
             <Link to={`/author/${post.author.slug.current}`}>
               {post.author.name}
             </Link>
-            in
+            {` `} in {` `}
             <Link
               className="post-meta-tag"
               to={`/category/${post.categories[0].slug.current}`}
             >
               {post.categories[0].title}
             </Link>
-            on
+            {` `} on {` `}
             <time dateTime="10-07-2019">10 Jul 2019</time>
           </span>
-          <p>{span.text} </p>
+          <p className="post-excerpt">{span.text} </p>
         </div>
       </Inner>
     </ArticleTeaser>

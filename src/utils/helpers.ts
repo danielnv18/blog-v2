@@ -1,7 +1,7 @@
 import { SanityBlock, SanitySpan } from "../types";
 
 export function nodeExcerpt(blocks: Array<SanityBlock>): SanitySpan {
-  const limit = 400;
+  const limit = 220;
   const blockIndex = blocks.findIndex((block) => block.children.length >= 0);
 
   const span = blocks[blockIndex].children.find((child) => child.text !== "");
