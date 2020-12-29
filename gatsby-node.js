@@ -64,9 +64,9 @@ async function createCategoryPages(graphql, actions, reporter) {
   categoryEdges.forEach((edge, index) => {
     const { id, slug = {} } = edge.node;
 
-    const path = `/category/${slug.current}/`;
+    const path = `/tags/${slug.current}/`;
 
-    reporter.info(`Creating category page: ${path}`);
+    reporter.info(`Creating tags page: ${path}`);
 
     createPage({
       path,

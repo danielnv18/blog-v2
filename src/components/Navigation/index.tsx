@@ -48,7 +48,7 @@ function Navigation({ location }: NavigationProps) {
             </li>
             <li
               className={classnames("nav-about", {
-                active: isActive(location.pathname, "/about"),
+                active: isActive(location.pathname, "/about/"),
               })}
               role="presentation"
             >

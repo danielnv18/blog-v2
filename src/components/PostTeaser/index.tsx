@@ -27,7 +27,7 @@ function PostTeaser(props: PostTeaserProps) {
             {` `} in {` `}
             <Link
               className="post-meta-tag"
-              to={`/category/${post.categories[0].slug.current}`}
+              to={`/tags/${post.categories[0].slug.current}`}
             >
               {post.categories[0].title}
             </Link>
