@@ -117,3 +117,8 @@ declare module "@sanity/block-content-to-react" {
   /** React component for transforming Sanity block content to React components */
   export default function BlockContent(props: BlockContentProps): JSX.Element;
 }
+
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}
