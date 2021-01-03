@@ -1,0 +1,27 @@
+.footer {
+  position: relative;
+  z-index: 20;
+  padding-top: calc(12rem + 8vw);
+  padding-bottom: 4rem;
+  margin-top: auto;
+}
+.navWrapper {
+  display: flex;
+  padding: 0 4rem;
+}
+.navCopy {
+  display: block;
+  width: 100%;
+  font-size: 1.6em;
+  line-height: 2rem;
+  color: var(--color-text-secondary);
+}
+@media only screen and (max-width: 640px) {
+  .navWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navCopy {
+    margin-bottom: 1rem;
+  }
+}
