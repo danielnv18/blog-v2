@@ -2,8 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --font-primary: 'Fira Sans', sans-serif;
-    --font-secondary: 'Cardo Baskerville', serif;
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-secondary: Georgia,serif;
     --color-neutral-98: #f7f8fa;
     --color-neutral-90: #e1e3e6;
     --color-neutral-80: #c4c7cc;
