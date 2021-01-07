@@ -4,6 +4,7 @@ import { WindowLocation } from "@reach/router";
 import classnames from "classnames";
 import { Inner } from "../../utils/styles";
 import { NavClose, NavHeader, NavControl } from "./styles";
+import styles from "./navigation.module.css";
 import IconMenu from "../../icons/bars-solid.svg";
 import IconSearch from "../../icons/search-solid.svg";
 
@@ -23,8 +24,8 @@ function Navigation({ location }: NavigationProps) {
 
   return (
     <>
-      <NavHeader className="nav-header">
-        <nav className="nav-wrapper">
+      <div className={styles.navHeader}>
+        <nav className={styles.navWrapper}>
           <ul role="navigation" aria-label="Navigation">
             <li
               className={classnames("nav-home", {
@@ -98,8 +99,8 @@ function Navigation({ location }: NavigationProps) {
             </a>
           </Inner>
         </NavControl>
-      </NavHeader>
-      <NavClose className="nav-close" onClick={removeActiveClass} />
+      </div>
+      <div className={styles.navClose} onClick={removeActiveClass} />
     </>
   );
 }
