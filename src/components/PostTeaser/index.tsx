@@ -11,7 +11,7 @@ interface PostTeaserProps {
 
 function PostTeaser(props: PostTeaserProps) {
   const { post } = props;
-  const span = nodeExcerpt(post.body);
+  // const span = nodeExcerpt(post.body);
   return (
     <ArticleTeaser className="post">
       <Inner>
@@ -34,7 +34,7 @@ function PostTeaser(props: PostTeaserProps) {
             {` `} on {` `}
             <time dateTime="10-07-2019">10 Jul 2019</time>
           </span>
-          <p className="post-excerpt">{span.text} </p>
+          {/* <p className="post-excerpt">{span.text} </p> */}
         </div>
       </Inner>
     </ArticleTeaser>
