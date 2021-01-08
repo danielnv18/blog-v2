@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: danielnv18/blogv2
+  repo: danielnv18/blog-v2
   branch: main
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
