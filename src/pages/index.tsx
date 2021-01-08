@@ -15,9 +15,7 @@ function IndexPage(props: IndexPageProps) {
   const { posts } = data;
   return (
     <Layout location={location} header={{ title: "Daniel Noyola" }}>
-      {posts.nodes.map((post) => (
-        <PostTeaser key={post.id} post={post} />
-      ))}
+      booo
     </Layout>
   );
 }
