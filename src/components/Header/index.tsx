@@ -1,6 +1,5 @@
 import React from "react";
 import Img from "gatsby-image";
-import styled from "styled-components";
 import { StyledHeader } from "./styles";
 import { Inner } from "../../utils/styles";
 import classnames from "classnames";
