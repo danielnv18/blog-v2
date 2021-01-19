@@ -1,19 +1,58 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const _ = require("lodash");
+const path = require("path");
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  switch (node.internal.type) {
+    case "MarkdownRemark": {
+      const { permalink, layout, primaryTag } = node.frontmatter;
+      const { relativePath } = getNode(node.parent);
+
+      let slug = permalink;
+
+      if (!slug) {
+        slug = `/${relativePath.replace(".md", "")}/`;
+      }
+
+      // Used to generate URL to view this content.
+      createNodeField({
+        node,
+        name: "slug",
+        value: slug || "",
+      });
+
+      // Used to determine a page layout.
+      createNodeField({
+        node,
+        name: "layout",
+        value: layout || "",
+      });
+
+      createNodeField({
+        node,
+        name: "primaryTag",
+        value: primaryTag || "",
+      });
+    }
+  }
+};
 
 async function createBlogPostPages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
-    {
-      allSanityPost(filter: { slug: { current: { ne: null } } }) {
+    query allPostQuery {
+      allMarkdownRemark(
+        limit: 2000
+        sort: { fields: [frontmatter___date], order: ASC }
+        filter: { frontmatter: { draft: { ne: true } } }
+      ) {
         edges {
           node {
             id
-            slug {
-              current
+            fields {
+              layout
+              slug
             }
           }
         }
@@ -21,99 +60,30 @@ async function createBlogPostPages(graphql, actions, reporter) {
     }
   `);
 
-  if (result.errors) throw result.errors;
+  if (result.errors) {
+    console.error(result.errors);
+    throw new Error(result.errors);
+  }
+  const postEdges = (result.data.allMarkdownRemark || {}).edges || [];
 
-  const postEdges = (result.data.allSanityPost || {}).edges || [];
+  postEdges.forEach(({ node }, index) => {
+    const { id } = node;
+    const { slug, layout } = node.fields;
 
-  postEdges.forEach((edge, index) => {
-    const { id, slug = {} } = edge.node;
-
-    const path = `/blog/${slug.current}/`;
+    const path = `/blog/${slug}/`;
 
     reporter.info(`Creating blog post page: ${path}`);
 
     createPage({
       path,
-      component: require.resolve("./src/templates/post.tsx"),
-      context: { id },
-    });
-  });
-}
-
-async function createCategoryPages(graphql, actions, reporter) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allSanityCategory(filter: { slug: { current: { ne: null } } }) {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  if (result.errors) throw result.errors;
-
-  const categoryEdges = (result.data.allSanityCategory || {}).edges || [];
-
-  categoryEdges.forEach((edge, index) => {
-    const { id, slug = {} } = edge.node;
-
-    const path = `/tags/${slug.current}/`;
-
-    reporter.info(`Creating tags page: ${path}`);
-
-    createPage({
-      path,
-      component: require.resolve("./src/templates/category.tsx"),
-      context: { id },
-    });
-  });
-}
-
-async function createAuthorPages(graphql, actions, reporter) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allSanityAuthor(filter: { slug: { current: { ne: null } } }) {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  if (result.errors) throw result.errors;
-
-  const authorEdges = (result.data.allSanityAuthor || {}).edges || [];
-
-  authorEdges.forEach((edge, index) => {
-    const { id, slug = {} } = edge.node;
-
-    const path = `/author/${slug.current}/`;
-
-    reporter.info(`Creating author page: ${path}`);
-
-    createPage({
-      path,
-      component: require.resolve("./src/templates/author.tsx"),
-      context: { id },
+      component: require.resolve(`./src/templates/${layout || "post"}.tsx`),
+      context: {
+        id,
+      },
     });
   });
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter);
-  await createCategoryPages(graphql, actions, reporter);
-  await createAuthorPages(graphql, actions, reporter);
 };

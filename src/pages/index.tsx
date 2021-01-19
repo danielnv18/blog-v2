@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import Layout from "../components/Layout";
-import { SanityPostConnection } from "../types";
+import { MarkdownRemarkConnection } from "../types";
 import PostTeaser from "../components/PostTeaser";
 
 interface IndexPageProps extends PageProps {
   data: {
-    posts: SanityPostConnection;
+    posts: MarkdownRemarkConnection;
   };
 }
 
@@ -15,37 +15,28 @@ function IndexPage(props: IndexPageProps) {
   const { posts } = data;
   return (
     <Layout location={location} header={{ title: "Daniel Noyola" }}>
-      booo
+      {posts.nodes.map((post) => (
+        <PostTeaser key={post.id} post={post} />
+      ))}
     </Layout>
   );
 }
 
 export const query = graphql`
   query indexPageQuery {
-    posts: allSanityPost {
+    posts: allMarkdownRemark {
       nodes {
         id
-        title
-        publishedAt
-        body {
-          children {
-            _type
-            text
-          }
+        excerpt
+        fields {
+          slug
         }
-        slug {
-          current
-        }
-        author {
-          name
-          slug {
-            current
-          }
-        }
-        categories {
+        frontmatter {
           title
-          slug {
-            current
+          tags
+          date
+          author {
+            id
           }
         }
       }

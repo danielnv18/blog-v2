@@ -1,40 +1,45 @@
 import React from "react";
 import { Link } from "gatsby";
-import { SanityPost } from "../../types";
+import { kebabCase } from "lodash";
+import { format } from "date-fns";
+import { MarkdownRemark } from "../../types";
 import { ArticleTeaser } from "./styles";
-import { nodeExcerpt } from "../../utils/helpers";
 import { Inner } from "../../utils/styles";
 
 interface PostTeaserProps {
-  post: SanityPost;
+  post: MarkdownRemark;
 }
 
 function PostTeaser(props: PostTeaserProps) {
   const { post } = props;
-  // const span = nodeExcerpt(post.body);
+  const date = new Date(post.frontmatter.date);
   return (
     <ArticleTeaser className="post">
       <Inner>
         <div className="box">
           <h2 className="post-title">
-            <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+            <Link to={`/blog/${post.fields.slug}`}>
+              {post.frontmatter.title}
+            </Link>
           </h2>
           <span className="post-meta">
             By {` `}
-            <Link to={`/author/${post.author.slug.current}`}>
-              {post.author.name}
+            <Link to={`/author/${kebabCase(post.frontmatter.author.id)}`}>
+              {post.frontmatter.author.id}
             </Link>
             {` `} in {` `}
             <Link
               className="post-meta-tag"
-              to={`/tags/${post.categories[0].slug.current}`}
+              to={`/tags/${kebabCase(post.frontmatter.tags[0])}`}
             >
-              {post.categories[0].title}
+              {post.frontmatter.tags[0]}
             </Link>
             {` `} on {` `}
-            <time dateTime="10-07-2019">10 Jul 2019</time>
+            <time dateTime={format(date, "dd-MM-yyyy")}>
+              {format(date, "dd MMM, yyyy")}
+            </time>
           </span>
-          {/* <p className="post-excerpt">{span.text} </p> */}
+          <p className="post-excerpt">{post.excerpt} </p>
         </div>
       </Inner>
     </ArticleTeaser>

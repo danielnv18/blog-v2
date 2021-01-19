@@ -1,13 +1,14 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import Layout from "../components/Layout";
-import Block from "../components/Block";
-import { SanityPost } from "../types";
+import Block from "../components/PostContent";
+import { MarkdownRemark } from "../types";
 import { Inner } from "../utils/styles";
+import PostContent from "../components/PostContent";
 
 interface PostTemplateProps extends PageProps {
   data: {
-    post: SanityPost;
+    post: MarkdownRemark;
   };
 }
 
@@ -16,12 +17,15 @@ function PostTemplate({ data, location }: PostTemplateProps) {
   return (
     <Layout
       location={location}
-      header={{ title: post.title, cover: post.mainImage.asset.fluid }}
+      header={{
+        title: post.frontmatter.title,
+        // cover: post.mainImage.asset.fluid,
+      }}
     >
       <article className="post">
         <Inner>
           <section className="post-content">
-            <Block blocks={post._rawBody} />
+            {/* <PostContent htmlAst={post.htmlAst} /> */}
           </section>
         </Inner>
       </article>
@@ -30,28 +34,18 @@ function PostTemplate({ data, location }: PostTemplateProps) {
 }
 
 export const query = graphql`
-  query BlogPostTemplateQuery($id: String!) {
-    post: sanityPost(id: { eq: $id }) {
+  query BlogPostTemplateQuery($id: String) {
+    post: markdownRemark(id: { eq: $id }) {
       id
-      publishedAt
-      title
-      mainImage {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+      htmlAst
+      frontmatter {
+        date
+        title
+        tags
+        author {
+          id
         }
       }
-      slug {
-        current
-      }
-      author {
-        name
-        slug {
-          current
-        }
-      }
-      _rawBody
     }
   }
 `;
