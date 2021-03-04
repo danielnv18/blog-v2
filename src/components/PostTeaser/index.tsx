@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "gatsby";
 import { kebabCase } from "lodash";
 import { format } from "date-fns";
-import { MarkdownRemark } from "../../types";
+import { MarkdownRemark, Mdx } from "../../types";
 import { ArticleTeaser } from "./styles";
 import { Inner } from "../../utils/styles";
 
 interface PostTeaserProps {
-  post: MarkdownRemark;
+  post: Mdx;
 }
 
 function PostTeaser(props: PostTeaserProps) {

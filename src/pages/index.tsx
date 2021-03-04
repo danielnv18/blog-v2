@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import Layout from "../components/Layout";
-import { MarkdownRemarkConnection } from "../types";
+import { MarkdownRemarkConnection, MdxConnection } from "../types";
 import PostTeaser from "../components/PostTeaser";
 
 interface IndexPageProps extends PageProps {
   data: {
-    posts: MarkdownRemarkConnection;
+    posts: MdxConnection;
   };
 }
 
@@ -24,7 +24,7 @@ function IndexPage(props: IndexPageProps) {
 
 export const query = graphql`
   query indexPageQuery {
-    posts: allMarkdownRemark {
+    posts: allMdx {
       nodes {
         id
         excerpt

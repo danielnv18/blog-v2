@@ -7,7 +7,7 @@ module.exports = {
     siteUrl: `https://daniel.noyola.dev`,
   },
   mapping: {
-    "MarkdownRemark.frontmatter.author": "AuthorYaml",
+    "Mdx.frontmatter.author": "AuthorYaml",
   },
   plugins: [
     // Plugins
@@ -30,6 +30,10 @@ module.exports = {
         name: "content",
         path: path.join(__dirname, "content"),
       },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {},
     },
     {
       resolve: "gatsby-transformer-remark",

@@ -1,14 +1,14 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
+
 import Layout from "../components/Layout";
-import Block from "../components/PostContent";
-import { MarkdownRemark } from "../types";
+import { Mdx } from "../types";
 import { Inner } from "../utils/styles";
-import PostContent from "../components/PostContent";
 
 interface PostTemplateProps extends PageProps {
   data: {
-    post: MarkdownRemark;
+    post: Mdx;
   };
 }
 
@@ -25,7 +25,7 @@ function PostTemplate({ data, location }: PostTemplateProps) {
       <article className="post">
         <Inner>
           <section className="post-content">
-            {/* <PostContent htmlAst={post.htmlAst} /> */}
+            <MDXProvider>{post.body}</MDXProvider>
           </section>
         </Inner>
       </article>
@@ -35,9 +35,9 @@ function PostTemplate({ data, location }: PostTemplateProps) {
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String) {
-    post: markdownRemark(id: { eq: $id }) {
+    post: mdx(id: { eq: $id }) {
       id
-      htmlAst
+      body
       frontmatter {
         date
         title

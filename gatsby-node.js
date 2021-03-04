@@ -5,7 +5,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   switch (node.internal.type) {
-    case "MarkdownRemark": {
+    case "Mdx": {
       const { permalink, layout, primaryTag } = node.frontmatter;
       const { relativePath } = getNode(node.parent);
 
@@ -42,7 +42,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     query allPostQuery {
-      allMarkdownRemark(
+      allMdx(
         limit: 2000
         sort: { fields: [frontmatter___date], order: ASC }
         filter: { frontmatter: { draft: { ne: true } } }
@@ -64,7 +64,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
     console.error(result.errors);
     throw new Error(result.errors);
   }
-  const postEdges = (result.data.allMarkdownRemark || {}).edges || [];
+  const postEdges = (result.data.allMdx || {}).edges || [];
 
   postEdges.forEach(({ node }, index) => {
     const { id } = node;
