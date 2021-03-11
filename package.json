@@ -8,6 +8,9 @@
     "build": "gatsby build",
     "generate": "graphql-codegen"
   },
+  "engines": {
+    "node": ">=12.14.0"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",

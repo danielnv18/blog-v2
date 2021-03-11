@@ -33,12 +33,9 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-mdx",
-      options: {},
-    },
-    {
-      resolve: "gatsby-transformer-remark",
       options: {
-        plugins: [
+        root: __dirname,
+        gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-responsive-iframe",
             options: {
