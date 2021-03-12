@@ -1,11 +1,10 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import { MDXProvider } from "@mdx-js/react";
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/Layout";
 import { Mdx } from "../types";
-import { Inner } from "../utils/styles";
+import { Inner, Post, PostContent } from "../utils/styles";
 
 interface PostTemplateProps extends PageProps {
   data: {
@@ -23,13 +22,13 @@ function PostTemplate({ data, location }: PostTemplateProps) {
         // cover: post.mainImage.asset.fluid,
       }}
     >
-      <article className="post">
+      <Post className="post">
         <Inner>
-          <section className="post-content">
+          <PostContent className="post-content">
             <MDXRenderer>{post.body}</MDXRenderer>
-          </section>
+          </PostContent>
         </Inner>
-      </article>
+      </Post>
     </Layout>
   );
 }
