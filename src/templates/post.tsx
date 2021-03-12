@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from "../components/Layout";
 import { Mdx } from "../types";
@@ -25,7 +26,7 @@ function PostTemplate({ data, location }: PostTemplateProps) {
       <article className="post">
         <Inner>
           <section className="post-content">
-            <MDXProvider>{post.body}</MDXProvider>
+            <MDXRenderer>{post.body}</MDXRenderer>
           </section>
         </Inner>
       </article>

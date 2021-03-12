@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import { WindowLocation } from "@reach/router";
+import { MDXProvider } from "@mdx-js/react";
+
 import { PageWrapper, Main } from "./styles";
 import Navigation from "./../Navigation";
 import Header, { HeaderProps } from "./../Header";
@@ -17,7 +19,9 @@ const Layout = (props: LayoutProps) => {
       <Navigation location={props.location} />
       <PageWrapper>
         <Header {...props.header} />
-        <Main>{props.children}</Main>
+        <Main>
+          <MDXProvider>{props.children}</MDXProvider>
+        </Main>
         <Footer />
       </PageWrapper>
     </>
