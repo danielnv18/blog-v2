@@ -24,7 +24,7 @@ function IndexPage(props: IndexPageProps) {
 
 export const query = graphql`
   query indexPageQuery {
-    posts: allMdx {
+    posts: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         id
         excerpt
