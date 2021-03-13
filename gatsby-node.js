@@ -6,13 +6,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   switch (node.internal.type) {
     case "Mdx": {
-      const { permalink, layout, primaryTag } = node.frontmatter;
-      const { relativePath } = getNode(node.parent);
+      const { permalink, layout, primaryTag, title } = node.frontmatter;
 
       let slug = permalink;
 
       if (!slug) {
-        slug = `/${relativePath.replace(".md", "")}/`;
+        slug = `${_.kebabCase(title)}`;
       }
 
       // Used to generate URL to view this content.
